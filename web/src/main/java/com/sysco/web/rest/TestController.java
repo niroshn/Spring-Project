@@ -5,7 +5,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class LogInController {
+public class TestController {
+
 
     @RequestMapping(value="/abc", method= RequestMethod.GET)
     public String check() {

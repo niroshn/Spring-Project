@@ -12,6 +12,28 @@
     <artifactId>web</artifactId>
     <packaging>war</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.sysco</groupId>
+            <artifactId>login</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sysco</groupId>
+            <artifactId>order</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sysco</groupId>
+            <artifactId>user</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+
+    </dependencies>
+
     <build>
         <finalName>ordermanager</finalName>
         <pluginManagement>
@@ -47,37 +69,7 @@
         </pluginManagement>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.sysco</groupId>
-            <artifactId>login</artifactId>
-            <version>1.0</version>
-        </dependency>
 
-        <dependency>
-            <groupId>com.sysco</groupId>
-            <artifactId>order</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sysco</groupId>
-            <artifactId>user</artifactId>
-            <version>1.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.0.2.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 
 
 
