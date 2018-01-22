@@ -13,11 +13,6 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>com.sysco</groupId>
-            <artifactId>login</artifactId>
-            <version>1.0</version>
-        </dependency>
 
         <dependency>
             <groupId>com.sysco</groupId>
@@ -28,6 +23,12 @@
         <dependency>
             <groupId>com.sysco</groupId>
             <artifactId>user</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sysco</groupId>
+            <artifactId>security</artifactId>
             <version>1.0</version>
         </dependency>
 
