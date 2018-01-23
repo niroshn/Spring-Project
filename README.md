@@ -6,6 +6,8 @@
 ```
 git clone https://github.com/niroshn/Spring-Project
 
+cd Spring-Project/
+
 mvn clean install
  
  ```
@@ -18,14 +20,14 @@ mvn clean install
 Go to /web directory 
 
 ```
-    cd /web
+cd web/
 
  ```
 execute the command 
 
 
 ```
-    mvn tomcat7:run
+mvn tomcat7:run
 
  ```
 The application is deployed at localhost:8080
