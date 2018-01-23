@@ -1,4 +1,4 @@
-package com.sysco.web.config;
+package com.sysco.ordermanager.web.config;
 
 
 import org.springframework.context.annotation.Bean;
