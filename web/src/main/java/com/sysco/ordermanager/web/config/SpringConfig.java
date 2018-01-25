@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = { "com.sysco" })
+@ComponentScan(basePackages = { "com.sysco.*" })
 
 public class SpringConfig implements WebMvcConfigurer {
 
