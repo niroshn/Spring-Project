@@ -8,13 +8,11 @@
     <artifactId>order-manager</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <modules>
-        <module>order</module>
-        <module>user</module>
-        <module>security</module>
-        <module>web</module>
-        <module>item</module>
-    </modules>
+
+
+    <properties>
+        <mysql.connector.version>5.1.31</mysql.connector.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -57,8 +55,53 @@
             <version>5.0.0.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.2.12.Final</version>
+        </dependency>
+
+         <!--https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api-->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+
+
+
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate.common/hibernate-commons-annotations -->
+        <dependency>
+            <groupId>org.hibernate.common</groupId>
+            <artifactId>hibernate-commons-annotations</artifactId>
+            <version>5.0.1.Final</version>
+        </dependency>
+
 
     </dependencies>
 
+    <modules>
+        <module>common</module>
+        <module>order</module>
+        <module>user</module>
+        <module>security</module>
+        <module>web</module>
+        <module>item</module>
+
+    </modules>
 
 </project>
