@@ -1,9 +1,5 @@
 package com.sysco.ordermanager.common.config;
 
-
-
-
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
@@ -14,7 +10,6 @@ public abstract class AbstractDAO<PK extends Serializable, T> {
 
     private final Class<T> persistentClass;
 
-    @SuppressWarnings("unchecked")
     public AbstractDAO(){
         this.persistentClass =(Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
     }

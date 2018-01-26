@@ -1,6 +1,6 @@
 package com.sysco.ordermanager.user.Service;
 
-import com.sysco.ordermanager.user.Model.User;
+import com.sysco.ordermanager.user.model.User;
 import com.sysco.ordermanager.user.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

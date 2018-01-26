@@ -2,10 +2,9 @@ package com.sysco.ordermanager.common.config;
 
 import java.util.Properties;
 
-import javax.naming.NamingException;
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,8 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -29,13 +27,16 @@ public class HibernateConfiguration {
     private Environment environment;
 
     @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.sysco" });
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
+    public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
+        LocalContainerEntityManagerFactoryBean lcemfb = new LocalContainerEntityManagerFactoryBean();
+        lcemfb.setJpaVendorAdapter(getJpaVendorAdapter());
+        lcemfb.setDataSource(dataSource());
+        lcemfb.setPersistenceUnitName("myJpaPersistenceUnit");
+        lcemfb.setPackagesToScan("com.sysco.ordermanager.user.model");
+        lcemfb.setJpaProperties(jpaProperties());
+        return lcemfb;
     }
+
 
     @Bean
     public DataSource dataSource() {
@@ -47,7 +48,7 @@ public class HibernateConfiguration {
         return dataSource;
     }
 
-    private Properties hibernateProperties() {
+    private Properties jpaProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
@@ -55,11 +56,18 @@ public class HibernateConfiguration {
         return properties;
     }
 
+
+    @Bean
+    public JpaVendorAdapter getJpaVendorAdapter() {
+        JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
+        return adapter;
+    }
+
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory s) {
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory(s);
+    public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager txManager = new JpaTransactionManager();
+        txManager.setEntityManagerFactory(emf);
         return txManager;
     }
 }

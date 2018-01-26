@@ -1,7 +1,7 @@
 package com.sysco.ordermanager.user.dao;
 
 
-import com.sysco.ordermanager.user.Model.User;
+import com.sysco.ordermanager.user.model.User;
 
 import java.util.List;
 

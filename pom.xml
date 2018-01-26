@@ -67,7 +67,7 @@
             <version>5.2.12.Final</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
+         <!--https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api-->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
