@@ -23,8 +23,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({ "com.sysco.*" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
+
+    private final Environment environment;
+
     @Autowired
-    private Environment environment;
+    public HibernateConfiguration(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
@@ -59,8 +64,7 @@ public class HibernateConfiguration {
 
     @Bean
     public JpaVendorAdapter getJpaVendorAdapter() {
-        JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        return adapter;
+        return new HibernateJpaVendorAdapter();
     }
 
     @Bean

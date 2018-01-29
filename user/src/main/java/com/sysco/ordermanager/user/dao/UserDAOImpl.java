@@ -6,46 +6,43 @@ import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.NoResultException;
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 
 @Repository("userDAO")
+@Transactional
 public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
 
     public User findById(int id) {
 
-    User user = (User) getByKey(id);
-
-    if(user!=null){
-//        initializeCollection(user.getUserProfiles());
+        return (User) getByKey(id);
     }
-    return user;
-}
 
     public User findBySSO(String sso) {
-        System.out.println("SSO : "+sso);
-        try{
+        System.out.println("SSO : " + sso);
+        try {
             User user = (User) getEntityManager()
                     .createQuery("SELECT u FROM User u WHERE u.ssoId LIKE :ssoId")
                     .setParameter("ssoId", sso)
                     .getSingleResult();
 
-            if(user!=null){
+            if (user != null) {
 //                initializeCollection(user.getUserProfiles());
             }
             return user;
-        }catch(NoResultException ex){
+        } catch (NoResultException ex) {
             return null;
         }
     }
 
     @SuppressWarnings("unchecked")
     public List<User> findAllUsers() {
-        List<User> users = getEntityManager()
+        return (List<User>) getEntityManager()
                 .createQuery("SELECT u FROM User u ORDER BY u.firstName ASC")
                 .getResultList();
-        return users;
     }
+
 
     public void save(User user) {
         persist(user);
@@ -58,9 +55,10 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
                 .getSingleResult();
         delete(user);
     }
+
     //An alternative to Hibernate.initialize()
     protected void initializeCollection(Collection<?> collection) {
-        if(collection == null) {
+        if (collection == null) {
             return;
         }
         collection.iterator().hasNext();

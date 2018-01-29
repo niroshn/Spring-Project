@@ -10,11 +10,12 @@ public abstract class AbstractDAO<PK extends Serializable, T> {
 
     private final Class<T> persistentClass;
 
-    public AbstractDAO(){
+    protected AbstractDAO(){
         this.persistentClass =(Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
     }
 
     @PersistenceContext
+    private
     EntityManager entityManager;
 
     protected EntityManager getEntityManager(){
