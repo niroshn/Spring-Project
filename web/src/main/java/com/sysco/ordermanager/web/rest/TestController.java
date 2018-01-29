@@ -21,4 +21,13 @@ public class TestController {
 
         return "abxxxx";
     }
+
+
+    @RequestMapping(value="/bbb", method= RequestMethod.GET)
+    public String checkB(@RequestParam("id") Integer id) {
+
+//        userService.saveUser(new User(id));
+
+        return "abxxxx";
+    }
 }
