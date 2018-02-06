@@ -8,6 +8,16 @@ public class User {
 
     @Id
     private Integer id;
+    private String name;
+    private int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public User(Integer id) {
         this.id=id;

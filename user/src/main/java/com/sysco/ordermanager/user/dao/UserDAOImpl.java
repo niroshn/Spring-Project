@@ -39,7 +39,7 @@ public class UserDAOImpl extends AbstractDAO<Integer, User> implements UserDAO {
     @SuppressWarnings("unchecked")
     public List<User> findAllUsers() {
         return (List<User>) getEntityManager()
-                .createQuery("SELECT u FROM User u ORDER BY u.firstName ASC")
+                .createQuery("SELECT name FROM User")
                 .getResultList();
     }
 

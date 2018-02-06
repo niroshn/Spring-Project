@@ -14,12 +14,18 @@ public class TestController {
     @Autowired
     UserService userService;
 
+//    @RequestMapping(value="/abc", method= RequestMethod.GET)
+//    public String check(@RequestParam("id") Integer id) {
+//
+//        userService.saveUser(new User(id));
+//
+//        return "abxxxx";
+//    }
+
     @RequestMapping(value="/abc", method= RequestMethod.GET)
-    public String check(@RequestParam("id") Integer id) {
+    public String check() {
 
-        userService.saveUser(new User(id));
-
-        return "abxxxx";
+        return String.valueOf(userService.findAllUsers());
     }
 
 
